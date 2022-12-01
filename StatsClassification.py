@@ -61,10 +61,13 @@ def main_function():
 
     os.chdir(os.path.realpath(__file__).rsplit("\\", 1)[0])
 
-    training_Set_df = pd.read_csv("expedia-hotel-recommendations/train_very_small.csv")
+    orig_dset = pd.read_csv("expedia-hotel-recommendations/train_overall.csv")
+
+    training_Set_df = orig_dset.dropna()
     training_labels = training_Set_df['is_booking'].to_numpy()
+
     pure_train = training_Set_df.drop(['date_time', 'cnt', 'is_booking', 'hotel_cluster', 'srch_ci',
-                                       'srch_co', 'orig_destination_distance'], axis=1)
+                                       'srch_co'], axis=1)
     pure_train_raw = pure_train.to_numpy()
     (training_inp_vec, test_inp_vec, training_set_labels, test_labels) = train_test_split(pure_train_raw, training_labels, test_size=0.2, random_state=999999)
 
