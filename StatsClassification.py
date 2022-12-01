@@ -57,10 +57,38 @@ def perform_d_tree(training_data, training_labels, test_data):
     return y_pred
 
 
-def main_function():
-
+def perform_hotel_cluster_classification():
     os.chdir(os.path.realpath(__file__).rsplit("\\", 1)[0])
+    orig_dset = pd.read_csv("expedia-hotel-recommendations/train_smallest.csv")
 
+    training_Set_df = orig_dset.dropna()
+    training_labels = training_Set_df['hotel_cluster'].to_numpy()
+
+    pure_train = training_Set_df.drop(['date_time', 'cnt', 'is_booking', 'hotel_cluster', 'srch_ci',
+                                       'srch_co'], axis=1)
+    pure_train_raw = pure_train.to_numpy()
+    (training_inp_vec, test_inp_vec, training_set_labels, test_labels) = train_test_split(pure_train_raw, training_labels, test_size=0.2, random_state=999999)
+
+    classification_types_list = ['SVM_RBF', 'BDR', 'SVM_LINEAR', 'D_TREE']
+
+    for classification_type in classification_types_list:
+        y_predict_new = classifier_output(getattr(ClassificationType, classification_type), training_inp_vec, training_set_labels, test_inp_vec)
+        accuracy_percentage = metrics.accuracy_score(test_labels, y_predict_new)
+        print("Method Used - {}".format(classification_type))
+        print("Accuracy score %.3f" % accuracy_percentage)
+
+        '''
+        cm = confusion_matrix(test_labels, y_predict_new)
+        disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=list(set(training_labels)))
+        disp.plot()
+        plt.title("Confusion Matrix - {}".format(classification_type))
+
+        plt.show()
+        '''
+
+
+def perform_binary_classification():
+    os.chdir(os.path.realpath(__file__).rsplit("\\", 1)[0])
     orig_dset = pd.read_csv("expedia-hotel-recommendations/train_overall.csv")
 
     training_Set_df = orig_dset.dropna()
@@ -87,6 +115,11 @@ def main_function():
         plt.show()
 
 
-if __name__=='__main__':
+def main_function():
+    #perform_binary_classification()
+    perform_hotel_cluster_classification()
+
+
+if __name__ == '__main__':
     main_function()
 
