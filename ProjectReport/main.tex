@@ -13,6 +13,8 @@
 	\usepackage{mdwtab}
 	\usepackage{eqparbox}
 	\usepackage{url}
+ \usepackage{multirow}
+ \usepackage{verbatim}
 	\hyphenation{op-tical net-works semi-conduc-tor}
 \usepackage{hyperref}
 \hypersetup{
@@ -41,7 +43,7 @@
 \begin{abstract}
 Planning a vacation or weekend escape can be an overwhelming affair because with thousands of hotels to choose from it’s difficult to know which one would suit your personal preferences. So in order to simplify this process we plan to create a recommendation strategy for hotel booking. We would use data analysis techniques for pre-processing/standardizing the data, and make inferences based on the statistical analysis of the data. We would use various statistical classification strategies and then perform hypothesis testing and then make conclusions based on it.
 \\
-\\ Project Type: Data exploration and inference.
+\\ Project Type: Data Exploration and Inference.
 \\
 \end{abstract}
 
@@ -104,54 +106,11 @@ There are 6 different continents in this dataset as seen in the figure. 'posa\_c
 
 In our analysis it was clear that 2014 had the most number of bookings. If we take a look at figure X which shows month wise bookings, the graph peaks at certain months in 2014 and clearly exceeds bookings made in 2013. We then see that the number of bookings in 2015 decreases heavily. Therefore, it might be a good idea for Expedia to compare what was the strategy in 2014 versus 2015 which caused such a considerable decline in the number of bookings.
 
-
-
-\begin{figure}[ht!] %!t
-\centering
-\includegraphics[width=3in]{FigureLP_ancien_mod.pdf}
-\caption{Measurements (grey), modeling (blue) of the CW RF performances of a 8x75$\mu$m AlInN/GaN HEMT at 10.24GHz in class AB. $Z_{loadOPT} = (20+j.18) \Omega$.}
-\label{LP}
-\end{figure}
-
-However, using this model, the transient dynamics of the average current during pulsed power RF measurements is not sufficient as was already observed in \cite{9257290}.
-Even if the output current behavior, due to capture and release of charges by traps is consistent as both processes are taken into account, the amplitude of the discontinuity of the current (named $\Delta I_{D1}$ in Figure \ref{Courant_2}), observed at the moment when the RF signal is switched off, has not enough amplitude. This can be explained by the fact that the extraction of the drain-lag contribution from pulsed-IV measurements at different quiescent bias points is a too much rough method to provide a correct traps induced current dispersion, especially around the nominal bias point, which is moreover often at low current in amplifiers. This however allows to model enough precisely the IV characteristics in the area of the IV network where the current is high and the drain voltage is close to the knee voltage, and where the traps induced current dispersion limits the RF load lines swing under RF power drive. This explains the good capability of the previous model to fit RF power characteristics despite the use of pulsed IV networks to model the lag correction terms.
-
-We propose here to use low-frequency S-parameters measurements instead or in addition to pulsed IV measurements, which represent a far more precise and convenient method to extract the drain-lag contribution in the transistors non-linear models. Precise because the S-parameters do not provide the current, but directly its derivative. The output conductance is expressed by $g_d=\Re \left\{Y(2,2)\right\}$. $g_d$ is very sensitive to the drain-lag trapping effects, in the frequency range of the emission time constants of these traps.
-
-Convenient because the variations of the output conductance also provide the detrapping and thermal time constants, and give the ability to separate both effects, which induce opposite $g_d$ variations. However, traps time constants are particularly dependent on the electric fields and the temperature conditions (i.e. the measurement bias point), and these variations are not taken into account in the drain-lag model for the moment. Thus, the modeled traps time constants are fixed at the values measured with low frequency S-parameters at the nominal bias point of the application.
-
-The amplitude of the correction term is also determined from the same measurement, at the nominal bias point, in order to get the correct dispersion level in pulsed RF case, when RF is switched off and the transistor goes back to its nominal bias point. This however highlighted an imprecision of the previous model, in which the dispersion correction term was added to the command voltage vgs. Indeed, the fit of the output conductance dispersion induced by trapping effects leaded to a too high level of dispersion at high current, i.e. where the RF signal swings during power RF operation, thus inducing too much power slump in such cases. The model has been modified in order to add this correction term to the pinch-off voltage ($v_p$) formulation and also to the parameter $I_{DSS}$ (determining the steady state current) into the current source equations. Both contributions are written in order to conserve the proportionality relationship between $v_p$ and $I_{DSS}$. It allows to get a more precise dependence of the dispersion versus the current Ids delivered by the current source.
-
-\begin{figure}[ht!] %!t
-\centering
-\includegraphics[width=3.0in]{Compare_S.pdf}
-\caption{$\Re\{Y_{22}\}$ and $\Im\{Y_{22}\}$. AlInN/GaN 8x75 $\mu m$ HEMT measurements at $V_{ds}=20V$, $I_{ds}=120mA$ (grey) are compared to a simple eletro-thermal model (red) and an eleectro-thermal model including activated drain-lag effects (blue)}
-\label{Compare_S}
-\end{figure}
-
-A low-frequency S-parameters comparison between measurements and simulation at $V_{ds}$=20V, $I_{ds}$=200mA/mm is presented at Figure \ref{Compare_S}. The measurements have been performed between 5Hz and 500MHz in order to capture all the variations range of the thermal and trapping effects.
-
-We can observe two main traps having emission time constants leading to an increase of gd in the range of 2kHz-8kHz and 20kHz-1MHz, respectively. Thermal effects induce a decrease of the output conductance. The thermal model was determined from a three-dimensional finite element (3D-FE) simulation, and in order to take into account the distribution of the time constants, five RC-cells (i.e. five time constants) are necessary. However, the thermal contribution on the output conductance is quite negligible, as can be seen on the red curve that corresponds to the model with thermal effects only (trapping effects are desactivated).
-
-The imaginary part of $Y(2,2)$ is also presented, and a good agreement between the measurements and the simulations with this non-linear electrothermal model can also be observed. One can see that this imaginary part exhibits two maxima, which correspond to two kinds of drain-lag inducing traps. Thus this kind of measurement provides a convenient way to identify various types of traps in the transistor. 
-
-\begin{figure}[ht!] %!t
-\centering
-\includegraphics[width=3.0in]{Compare_pulse.pdf}
-\caption{Measurements (grey) and modeling (blue) of the average output current in pulsed RF signal operation at 10 GHz (5$\mu$s-100$\mu$s) with DC bias (20V, 115 mA). The amplitude of the transcient induced by detrapping when RF is switched off is accurately modeled.}
-\label{Compare_pulse}
-\end{figure}
-
-Figure \ref{Compare_pulse} shows a comparison between RF pulsed measurements and simulations with this model. The transistor is measured at Vds0=20V, Ids0=115mA (190mA/mm), on a load impedance $Z_{load}=\left(20+j18\right)\Omega$. The bias voltages are continuous, and the RF signal, at a frequency of 10GHz, is pulsed. Its duration is 5$\mu s$, and its period 100$\mu s$. On this example, the RF imput power equals 20dBm, corresponding approximately to 1dB of gain compression. The very large amplitude of the current discontinuity at the moment when RF is switched off leads to a transient current from 97mA to 115mA (i.e. the nominal bias point). 
-
-Envelope-transient simulations show the modeled output current, and the model enhanced capability to reproduce both the current discontinuity and the slow transient due to traps emission. The emission time constants are however not very accurate, and this can be due by the strong non-linearity of traps time constants versus bias and temperature, as explained previously.
-
-
 % ==================
 % # IV. CONCLUSION #
 % ==================
 
-\section{\textbf{Binary and Multi-Class Classification Techniques:}}
+\section{\textbf{Binary and Multi-Class Supervised Classification Techniques:}}
 For the classification problem, we need to basically make two types of classifications and answer/predict the following two unknowns.
 \begin{itemize}
 \item Whether the given user would make a booking ? - This involves Binary Classification as we have a yes/no answer.
@@ -160,14 +119,37 @@ For the classification problem, we need to basically make two types of classific
 
 \subsection{Classification Methods:}
 
-\subsubsection{Naive Bayes Decision Classifier:}
-To be filled.
+\subsubsection{Naive Bayes Decision Classifier}
+Naive Bayes Classifiers and basic probabilistic Machine learning Classifiers based on Bayes Decision Rule. \cite{stat_learning} \\
+Naive Bayes Classifiers takes the training input vectors and considers each of its input feature to be independent of one other, and maps them on the feature vector space independently and creates a statistical probability distribution of the training vectors based on the classes they belong to. For predicting the class of the test vector it calculates the Maximum a posteriori (MAP) probability and calculates the probability of that test vector belonging to each class based on the Bayes Theorem. The Predicted class would be the one that had the highest probability value. 
+\begin{figure}[htbp] %!t
+\centering
+\includegraphics[width=2.5in]{naive_bayes_icon.PNG}
+\label{Naive Bayes classification mechanism}
+\caption{Naive Bayes Classifier - computing posterior probability}
+\end{figure}
 
-\subsubsection{Support Vector Machines}
-To be filled.
+\subsubsection{Support Vector Machines (SVM)}
+Support Vector Machines (SVM) is a machine learning algorithm for the statistical classification of input data making a prediction of its desired class based on the input vector.\cite{svm} \\
+SVM Working Mechanism for binary classification - The SVM Algorithm takes in the input vector from the training dataset and maps it in its respective vector space one at a time. It maps all the training vectors into the vector space and it does so while creating a decision boundary such as the cumulative distance between the vectors belonging to the two classes is maximized. i.e, the decision boundary should separate the two types of input vectors in the best possible (optimal) way such that the vectors could be differentiated with a high margin of the distance between them.
+\begin{figure}[htbp] %!t
+\centering
+\includegraphics[width=2.5in]{svm_image.PNG}
+\label{SVM classification mechanism}
+\caption{SVM classification mechanism}
+\end{figure}
 
-\subsubsection{Decision Tree}
-To be filled.
+This Mechanism can be optimized in various ways by changing the decision boundary's shape - like using linear, polynomial or rbf kernel. The algorithm can also be optimized by tweaking the parameters of the decision boundary, etc. \\
+This method of binary classification SVM can further be extended to solve the Multi-Class classification problem. In this project we have used SVM with 'Linear' and 'RBF' (Radial Basis Function) Kernel. \\
+\subsubsection{Decision Tree Classification}
+Decision Tree Learning is a supervised, statistical machine-learning algorithm that makes predictions based on a classification tree formed using the input training data. This technique of learning can also be used in performing regression.\\
+\begin{figure}[htbp] %!t
+\centering
+\includegraphics[width=2.5in]{decision_tree.PNG}
+\label{Decision Tree Classification}
+\caption{Decision Tree Classification}
+\end{figure}
+The accuracy of this technique could further be improved using ensemble methods such as - boosted trees where we incrementally build an ensemble by training every new instance to fix previously mislabelled vectors. \cite{stat_learning} \cite{d_tree}
 
 \section{\textbf{Hotel Cluster Classification:}}
 In order to classify which cluster of hotels would be the user's choice we would use various machine learning methods and would train these ML classifiers on the dataset. For this project, we have tried classification methods like - Support Vector Machines, Naive Bayes Decision Classifier, and Decision Tree Classifier. \\
@@ -182,16 +164,56 @@ SVM (RBF Kernel)                  & 61.2 \%                                  \\ 
 Naive Bayes Decision Rule         & 59.2 \%                                  \\ \hline
 Decision Tree                     & 68.5 \%                                    \\ \hline
 \end{tabular}
+\caption{Hotel Cluster Classification Accuracy Values}
 \end{table}
+By observing these classification accuracy values, we can deduce that although the above mentioned classification techniques might not be on par with the industry standards (which involve computationally expensive and memory intensive neural network architectures) but can be used as a fairly decent benchmark for an above average recommendation system.
 \section{\textbf{User Decision Prediction}}
-Whether a user makes a booking or not.
-To be Filled
+In this part of the project we would like to formulate a technique to determine Whether a user would make a booking or not.\\
+This is a binary classification problem and we would use supervised machine-learning classification methods for predicting if a user will make an online booking.
+\begin{table}[htbp]
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Classification Technique} & \textbf{Binary Classification Accuracy} \\ \hline
+SVM (Linear Kernel)               & 83.3 \%                          \\ \hline
+SVM (RBF Kernel)                  & 90.2 \%                          \\ \hline
+Naive Bayes Decision Rule         & 91.9 \%                          \\ \hline
+Decision Tree                     & 92.4 \%                          \\ \hline
+\end{tabular}
+\caption{Binary Classification Accuracy Values}
+\end{table}
+We observe such high accuracy values in predicting the 'is\_booking' parameter as compared to cluster classification accuracy values because in our input distribution we have a very skewed distribution of 'is\_booking' label (as majority of the users don't make a booking when they perform a hotel search online). Hence the classifiers predict 0 in most of the cases (0 here means no booking was made).\\
+We can observe this better using Confusion Matrix for the respective methods (Table III) 
+
+\begin{table}[htbp]
+\begin{tabular}{|cc|cc|}
+\hline
+\multicolumn{2}{|c|}{\multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Confusion \\ Matrix\end{tabular}}}} & \multicolumn{2}{c|}{\textbf{Predicted Class}}                        \\ \cline{3-4} 
+\multicolumn{2}{|c|}{}                                                                                      & \multicolumn{1}{c|}{\textbf{0 (No Booking)}} & \textbf{1 (Booking )} \\ \hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Test Class}}}             & \textbf{0 (No Booking)}            & \multicolumn{1}{c|}{95.9 \%}                 & 4.1 \%                \\ \cline{2-4} 
+\multicolumn{1}{|c|}{}                                                 & \textbf{1 (Booking)}               & \multicolumn{1}{c|}{39.3 \%}                 & 61.7 \%               \\ \hline
+\end{tabular}
+\caption{Confusion Matrix for Binary Decision Tree Classifier}
+\end{table}
+Similarly, we can also observe the confusion matrix for Naive Bayes Classifier and observe that the amount of false-positive cases remains relatively unchanged but the proportion of false-negative classifications increase, thus reducing the overall accuracy slightly.
+
+\begin{table}[htbp]
+\begin{tabular}{|cc|cc|}
+\hline
+\multicolumn{2}{|c|}{\multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Confusion \\ Matrix\end{tabular}}}} & \multicolumn{2}{c|}{\textbf{Predicted Class}}                        \\ \cline{3-4} 
+\multicolumn{2}{|c|}{}                                                                                      & \multicolumn{1}{c|}{\textbf{0 (No Booking)}} & \textbf{1 (Booking )} \\ \hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Test Class}}}             & \textbf{0 (No Booking)}            & \multicolumn{1}{c|}{96.0 \%}                 & 4.0 \%                \\ \cline{2-4} 
+\multicolumn{1}{|c|}{}                                                 & \textbf{1 (Booking)}               & \multicolumn{1}{c|}{44.9 \%}                 & 55.1 \%               \\ \hline
+\end{tabular}
+\caption{Confusion Matrix for Naive Bayesian Classifier}
+\end{table}
+
+\begin{comment}
 \section{\textbf{Predictive Task}}
 \textbf{Logistic Regression (LR)}: Logistic Regression is similar to linear regression except that logistic regression predicts if something is true or false rather than predicting something continuous. Additionally instead of fitting a line to the data, logistic regression fits an ‘S-shaped’ logistic function and hence is primarily used for classification. LR models the chance of an outcome based on individual characteristics. Since chance is a ratio what actually gets modeled is the logarithm of chance given by:
 \begin{figure}[ht!] %!t
 \centering
 \includegraphics[width=3in]{LR.PNG}
-\label{pearson}
+\label{pearsona}
 \end{figure}
 
 where $\pi$ is probability of an event (e.g. belonging to a hotel cluster in our case), \(\beta_i\) are the regression coefficients and \(x_i\) are the predictive variables or features. 
@@ -210,17 +232,33 @@ where $\pi$ is probability of an event (e.g. belonging to a hotel cluster in our
 % ==============
 % # REFERENCES #
 % ==============
+\end{comment}
 
-\section{\textbf{Results and Conclusions}}
-To be Filled.
-\section{\textbf{Inferences}}
+\section{\textbf{Results and Observations}}
+Based on our analysis of the output, we can observe the following aspects of this data.
+\begin{itemize}
+\item Many of features in the input data are weakly correlated (as shown in Fig 1). hence, many of the input features can be considered as almost independent when modeling the data.
+\item We observe the user's behavior (choices) and how it varies to some degree based on region and season. Hence the users' choices show dependence on seasonal timing and region (both source and destination) to some extent.
+\item The user's decision on hotel booking can be predicted with a decent amount of accuracy (~90 \%) using basic supervised machine-learning classification techniques, but it is much more difficult to predict the user preference of hotel cluster i.e, the accuracy for predicting user's preference for hotel clusters is relatively low.
+\end{itemize}
+ 
+\section{\textbf{Inferences and Conclusion}}
+\subsection{Inferences:}
 We can make the following inferences based on our exploration.
 \begin{itemize}
   \item Mobile Users - The majority of the users who intend to search for hotels or make a booking are not doing so on a mobile device.
   \item Seasonal Preferences - On a Global scale, we observed that hotel bookings are affected by seasonal differences, and the months of August to December see a higher number of hotel bookings when the northern hemisphere experiences Fall and winter. (Majority of the world population lives in the northern hemisphere)
-  \item Regional Preferences - We have observed that the majority of the bookings are done from Continent id - 2 and are made for booking hotels in continent id - 3. (continent names redacted for user data privacy).
+  \item Regional Preferences - We have observed that the majority of the bookings are done from Continent id - 3 and are made for booking hotels in continent id - 2. (continent names redacted for user data privacy).
   \item Package Deals - Majority of the users booked the hotels which were not a part of a package deal offered by the agency.
-\end{itemize}
+  \end{itemize}
+  \subsection{Conclusion:}
+  Based on the results which we have obtained from various Data processing and Machine Learning techniques and after taking inferences based on those results, we can make the following qualitative concluding statements on the behavior of end-user.
+  \begin{itemize}
+  \item Majority of people prefer booking a hotel online in fall and winter season and some correlation with popular vacation seasons and frequency of hotel booking can be seen.
+\item A typical user interested in online hotel booking is likely a person of a certain regional area (continent - 3) and is interested in booking hotels for a different region (continent - 2), based on this inference we can hypothesize that majority of online hotel bookings are done for inter-continent travels.
+  \end{itemize}
+  
+
 
 \section{\textbf{Project Member Contribution}}
 \begin{table}[htbp]
@@ -230,11 +268,13 @@ Member Name    & Hours Contributed & Contribution Percentage \\ \hline
 Nikhil Dutt    & 25                & 50 \%                   \\ \hline
 Abhishek Khare & 25                & 50 \%                   \\ \hline
 \end{tabular}
+\caption{Individual Member Contribution}
 \end{table}
 
 \section{\textbf{Resources}}
-\noindent Project Repository - \href{https://github.com/abhishekkhare1998/Hotel-Booking-Recommendation}{Github Link}.\\
- Dataset Used - \href{https://www.kaggle.com/competitions/expedia-hotel-recommendations/data}{Kaggle Link}
+\noindent Project Repository - \href{https://github.com/abhishekkhare1998/Hotel-Booking-Recommendation}{Github}.\\
+ Dataset Used - \href{https://www.kaggle.com/competitions/expedia-hotel-recommendations/data}{Kaggle}. \\
+ Jupyter Notebook - \href{https://drive.google.com/file/d/17VUEoMIntPbKG1G3mKDFtrBeXv-4nBur/view?usp=sharing}{Jupyter Notebook Report (pdf)}.
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,biblio_traps_dynamics}
 
